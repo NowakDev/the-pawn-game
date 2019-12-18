@@ -1,12 +1,12 @@
 import React from 'react'
 
-import PlayerSelect from './containers/PlayerSelect'
+import Game from './Game'
 import './App.css'
 
 const App = (props) => {
   return (
     <div className="App">
-      <PlayerSelect />
+      <Game />
     </div>
   )
 }

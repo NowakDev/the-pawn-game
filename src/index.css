@@ -4,6 +4,7 @@ body {
   font-family: 'Roboto', sans-serif;
   width: 100vw;
   height: 100vh;
+  background-color: gray
 };
 
 h1, h2, h3, h4, h5, h6 {

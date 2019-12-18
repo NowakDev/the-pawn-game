@@ -6,3 +6,74 @@
   justify-content: center;
   align-items : center;
 }
+
+.pawn:hover {
+  transform: scale(1.5);
+}
+
+.start-button {
+  color: black;
+  font-size: large;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: lightgray;
+  border-radius: 5px;
+  display: inline-block;
+  border: 3px solid black;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
+  width: 200px;
+  height: 100px;
+}
+
+.start-button:hover {
+  background: #434343;
+  letter-spacing: 3px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 0px 0px 20px rgb(0, 0, 0);
+  transition: all 0.4s ease 0s;
+}
+
+.square {
+  text-align: center;
+  background-color: lightsteelblue;
+  border: 2px solid black
+}
+
+.gameBoard {
+  display: grid;
+  padding: 10px;
+  border: 1px solid black;  
+  grid-template-rows: repeat(6,100px);
+  grid-template-columns: repeat(6,100px);
+  grid-row-gap: 1px;
+  grid-column-gap: 1px;
+}
+
+.you-loose {
+  text-align: center;
+  background-color: black;
+  border: 2px solid black
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pawn-image {
+  transform: scale(0.6);
+}
+
+.players-info-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-container {
+  display: flex;
+  justify-content: center;
+}
