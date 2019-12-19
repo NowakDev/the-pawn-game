@@ -1,5 +1,8 @@
 import React from 'react'
 
+import YouLoose from '../components/YouLoose'
+import MoveToEleven from '../components/MoveToEleven'
+
 class Board extends React.Component {
 
   state = {
@@ -8,38 +11,46 @@ class Board extends React.Component {
     currentPlayer: 1,
     firstPlayerPosition: 0,
     secondPlayerPosition: 0,
+    grid_size: 6
   }
 
   componentDidMount() {
 
     const { players } = this.props
+    const { grid_size } = this.state
 
     const squares = [
       {
         row: 1,
         col: 1,
-        type: 'start'
+        number: 'start'
       }
     ]
 
-    let i = 1
-    for (let row = 1; row <= 6; row++) {
-      for (let col = 1; col <= 6; col++) {
-        if (row === 1 && col === 1) {
-          continue
-        }
-        if (row === 1 || row === 6 || col === 1 || col === 6) {
+    let row = 1
+    let col = 2
 
-          const square = {
-            row,
-            col,
-          }
-          squares.push(square)
-          i++
-        }
+    for (let i = 1; i < 20; i++) {
+
+      const square = {
+        row,
+        col,
+        number: i
       }
-    }
 
+      if (i < grid_size - 1) {
+        col++
+      } else if (i < 2 * grid_size - 2) {
+        row++
+      } else if (i < 3 * grid_size - 3) {
+        col--
+      } else {
+        row--
+      }
+
+      squares.push(square)
+
+    }
 
     this.setState({
       squares,
@@ -48,6 +59,7 @@ class Board extends React.Component {
   }
 
   render() {
+
     const { squares } = this.state
 
     return (
@@ -57,21 +69,22 @@ class Board extends React.Component {
         >
           {
             squares.map((square, index) => (
-              <div
-                className={
-                  square.row === 6 && square.col === 4 ?
-                    'you-loose'
-                    :
-                    'square'
-                }
-                key={index}
-                style={{
-                  gridRow: square.row,
-                  gridColumn: square.col
-                }}
-              >
-                {square.type}
-              </div>
+              index === 12 ?
+                <YouLoose key={index} />
+                :
+                index === 19 ?
+                  <MoveToEleven key={index} />
+                  :
+                  <div
+                    className='square'
+                    key={index}
+                    style={{
+                      gridRow: square.row,
+                      gridColumn: square.col
+                    }}
+                  >
+                    {square.number}
+                  </div>
             ))
           }
         </div>

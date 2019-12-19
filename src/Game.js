@@ -17,6 +17,10 @@ class Game extends React.Component {
     })
   }
 
+  rollTheDice = () => {
+    const rolledNumber = Math.ceil(Math.random() * 6)
+  }
+
 
   render() {
     const { players, gameStarted } = this.state
@@ -45,6 +49,12 @@ class Game extends React.Component {
                   </div>
                 ))}
               </div>
+              <button
+                className="roll-button"
+                onClick={this.rollTheDice}
+              >
+                Roll!
+                </button>
               <Board players={players} />
             </div>
             :

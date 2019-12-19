@@ -27,7 +27,6 @@
 }
 
 .start-button:hover {
-  background: #434343;
   letter-spacing: 3px;
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
@@ -35,8 +34,15 @@
   transition: all 0.4s ease 0s;
 }
 
+.start-button:active {
+  box-shadow: 0 5px gray;
+  transform: translateY(2px);
+}
+
 .square {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: lightsteelblue;
   border: 2px solid black
 }
@@ -49,12 +55,6 @@
   grid-template-columns: repeat(6,100px);
   grid-row-gap: 1px;
   grid-column-gap: 1px;
-}
-
-.you-loose {
-  text-align: center;
-  background-color: black;
-  border: 2px solid black
 }
 
 .player-info {
@@ -76,4 +76,55 @@
 .game-container {
   display: flex;
   justify-content: center;
+}
+
+
+.you-loose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: black;
+  border: 2px solid black;
+  grid-row: 6;
+  grid-column: 4;
+}
+
+.move-to-eleven {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: orange;
+  border: 2px solid black;
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.roll-button {
+  color: black;
+  font-size: large;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: lightgray;
+  border-radius: 5px;
+  display: inline-block;
+  border: 3px solid black;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+}
+
+.roll-button:hover {
+  letter-spacing: 3px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 0px 0px 20px rgb(0, 0, 0);
+  transition: all 0.4s ease 0s;
+}
+
+.roll-button:active {
+  box-shadow: 0 5px gray;
+  transform: translateY(2px);
 }
