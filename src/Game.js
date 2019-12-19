@@ -38,7 +38,6 @@ class Game extends React.Component {
 
   }
 
-
   render() {
     const { players, gameStarted, currentPlayer, rolledNumber } = this.state
 
@@ -49,6 +48,7 @@ class Game extends React.Component {
         {
           gameStarted ?
             <div>
+              <Board players={players} />
               <div
                 className='players-info-box'
               >
@@ -91,7 +91,6 @@ class Game extends React.Component {
                   </div>
                 </div>
               </div>
-              <Board players={players} />
             </div>
             :
             <PlayerSelect gameStart={this.gameStart} />

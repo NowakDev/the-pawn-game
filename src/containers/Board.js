@@ -9,8 +9,6 @@ class Board extends React.Component {
     squares: [],
     players: [],
     currentPlayer: 1,
-    firstPlayerPosition: 0,
-    secondPlayerPosition: 0,
     grid_size: 6
   }
 
@@ -60,7 +58,11 @@ class Board extends React.Component {
 
   render() {
 
-    const { squares } = this.state
+    const { squares, players } = this.state
+
+    const playersPositions = players.map(player => (
+      squares[player.position]
+    ))
 
     return (
       <div>
@@ -85,6 +87,23 @@ class Board extends React.Component {
                   >
                     {square.number}
                   </div>
+            ))
+          }
+          {
+            playersPositions.map((position, index) => (
+              <div
+                key={index}
+                style={{
+                  gridRow: position.row,
+                  gridColumn: position.col
+                }}
+                className='pawn-on-board'
+              >
+                <img
+                  src={`./pawns/${players[index].pawnColor}-pawn.png`}
+                  alt={`${players[index].pawnColor}-pawn`}
+                />
+              </div>
             ))
           }
         </div>
