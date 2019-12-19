@@ -47,7 +47,7 @@ class PlayerSelect extends React.Component {
     return (
       players.length === 0 ?
         <div>
-          <h1>Player 1, select a pawn to begin:</h1>
+          <h1>Please, select a pawn to begin:</h1>
           <div style={styles.pawnBox}>
             {
               pawns.map(pawn => (

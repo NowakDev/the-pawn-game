@@ -43,7 +43,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightsteelblue;
+  background-color: #FEE4C4;
   border: 2px solid black
 }
 
@@ -59,18 +59,28 @@
 
 .player-info {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.pawn-image {
+.moves-now {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pawn-image-small {
   transform: scale(0.6);
+}
+
+.pawn-image-large {
+  transform: scale(1.2);
 }
 
 .players-info-box {
   display: flex;
-  justify-content: space-between;
+  margin: 10px;
+  justify-content: flex-end;
 }
 
 .game-container {
@@ -104,6 +114,7 @@
 .roll-button {
   color: black;
   font-size: large;
+  margin: 10px;
   text-transform: uppercase;
   text-decoration: none;
   background: lightgray;
@@ -113,7 +124,7 @@
   transition: all 0.4s ease 0s;
   cursor: pointer;
   width: 100px;
-  height: 50px;
+  height: 70px;
 }
 
 .roll-button:hover {
@@ -127,4 +138,24 @@
 .roll-button:active {
   box-shadow: 0 5px gray;
   transform: translateY(2px);
+}
+
+.dice-box {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.dice {
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  width: 70px;
+  height: 70px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: whitesmoke
 }
