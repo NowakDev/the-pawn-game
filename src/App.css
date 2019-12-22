@@ -160,6 +160,9 @@
   background-color: whitesmoke
 }
 
-.pawn-on-board img {
+.pawn-on-board {
+  display: flex;
+  justify-content: center;
+  align-content: center;
   transform: scale(0.5);
 }

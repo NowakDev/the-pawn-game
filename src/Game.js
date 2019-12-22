@@ -29,7 +29,13 @@ class Game extends React.Component {
     const players = this.state.players.map(player => {
 
       if (player.number === currentPlayer.number) {
-        const updatedPosition = player.position + rolledNumber
+
+
+        const updatedPosition = (player.position + rolledNumber) > 20 ?
+          20 - (player.position + rolledNumber - 20)
+          :
+          player.position + rolledNumber
+
         player = {
           ...player,
           position: updatedPosition
