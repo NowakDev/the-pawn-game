@@ -9,13 +9,16 @@ class Game extends React.Component {
   state = {
     players: [],
     gameStarted: false,
-    currentPlayer: 1,
+    currentPlayer: {},
     rolledNumber: Math.ceil(Math.random() * 6)
   }
 
   gameStart = (players) => {
+    const currentPlayer = players.find(player => player.number === 1)
+
     this.setState({
       players,
+      currentPlayer,
       gameStarted: true
     })
   }
@@ -23,19 +26,24 @@ class Game extends React.Component {
   rollTheDice = () => {
     const { currentPlayer } = this.state
     const rolledNumber = Math.ceil(Math.random() * 6)
+    const players = this.state.players.map(player => {
 
-    if (currentPlayer === 1) {
-      this.setState({
-        currentPlayer: 2,
-        rolledNumber
-      })
-    } else if (currentPlayer === 2) {
-      this.setState({
-        currentPlayer: 1,
-        rolledNumber
-      })
-    }
+      if (player.number === currentPlayer.number) {
+        const updatedPosition = player.position + rolledNumber
+        player = {
+          ...player,
+          position: updatedPosition
+        }
+      }
+      return player
+    })
 
+    const secondPlayer = players.find(player => player.number !== currentPlayer.number)
+    this.setState({
+      players,
+      currentPlayer: secondPlayer,
+      rolledNumber
+    })
   }
 
   render() {
@@ -48,7 +56,11 @@ class Game extends React.Component {
         {
           gameStarted ?
             <div>
-              <Board players={players} />
+              <Board
+                players={players}
+                currentPlayer={currentPlayer}
+                rolledNumber={rolledNumber}
+              />
               <div
                 className='players-info-box'
               >
@@ -78,7 +90,7 @@ class Game extends React.Component {
                       >
                         <img
                           className={
-                            player.number === currentPlayer ?
+                            player.number === currentPlayer.number ?
                               'pawn-image-large'
                               :
                               'pawn-image-small'

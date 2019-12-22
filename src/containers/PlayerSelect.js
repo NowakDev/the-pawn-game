@@ -73,7 +73,7 @@ class PlayerSelect extends React.Component {
           <div style={styles.pawnBox}>
             {
               players.map(player => (
-                <h1
+                < h1
                   key={player.number}
                   style={styles.pawnBox}
                 >
@@ -92,7 +92,7 @@ class PlayerSelect extends React.Component {
           >
             Play!
           </button>
-        </div>
+        </div >
     )
   }
 }

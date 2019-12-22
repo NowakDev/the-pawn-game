@@ -8,13 +8,11 @@ class Board extends React.Component {
   state = {
     squares: [],
     players: [],
-    currentPlayer: 1,
     grid_size: 6
   }
 
   componentDidMount() {
 
-    const { players } = this.props
     const { grid_size } = this.state
 
     const squares = [
@@ -47,22 +45,20 @@ class Board extends React.Component {
       }
 
       squares.push(square)
-
     }
-
     this.setState({
-      squares,
-      players: players
+      squares
     })
   }
 
   render() {
 
-    const { squares, players } = this.state
-
-    const playersPositions = players.map(player => (
-      squares[player.position]
-    ))
+    const { squares } = this.state
+    const { players } = this.props
+    const playersPositions = squares.length > 0 ?
+      players.map(player => squares[player.position % squares.length])
+      :
+      []
 
     return (
       <div>
