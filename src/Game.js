@@ -3,6 +3,7 @@ import React from 'react'
 import PlayerSelect from './containers/PlayerSelect'
 import Board from './containers/Board'
 import Dice from './components/Dice'
+import Winner from '../src/containers/Winner'
 
 class Game extends React.Component {
 
@@ -10,7 +11,8 @@ class Game extends React.Component {
     players: [],
     gameStarted: false,
     currentPlayer: {},
-    rolledNumber: Math.ceil(Math.random() * 6)
+    rolledNumber: Math.ceil(Math.random() * 6),
+    isWinner: {}
   }
 
   gameStart = (players) => {
@@ -29,7 +31,8 @@ class Game extends React.Component {
     const players = this.state.players.map(player => {
 
       if (player.number === currentPlayer.number) {
-
+        const rolledMeshes = player.rolledMeshes
+        rolledMeshes.push(rolledNumber)
 
         const updatedPosition = (player.position + rolledNumber) > 20 ?
           20 - (player.position + rolledNumber - 20)
@@ -38,7 +41,8 @@ class Game extends React.Component {
 
         player = {
           ...player,
-          position: updatedPosition
+          position: updatedPosition,
+          rolledMeshes
         }
       }
       return player
@@ -49,71 +53,81 @@ class Game extends React.Component {
       players,
       currentPlayer: secondPlayer,
       rolledNumber
+    }, () => {
+      const isWinner = players.some(player => player.position === 20)
+      if (isWinner) {
+        this.setState({
+          isWinner: currentPlayer
+        })
+      }
     })
   }
 
   render() {
-    const { players, gameStarted, currentPlayer, rolledNumber } = this.state
+    const { players, gameStarted, currentPlayer, rolledNumber, isWinner } = this.state
 
     return (
-      <div
-        className='game-container'
-      >
-        {
-          gameStarted ?
-            <div>
-              <Board
-                players={players}
-                currentPlayer={currentPlayer}
-                rolledNumber={rolledNumber}
-              />
-              <div
-                className='players-info-box'
-              >
+      isWinner.position ?
+        <Winner winner={isWinner.number} />
+        :
+        <div
+          className='game-container'
+        >
+          {
+            gameStarted ?
+              <div>
+                <Board
+                  players={players}
+                  currentPlayer={currentPlayer}
+                  rolledNumber={rolledNumber}
+                />
                 <div
-                  className='dice-box'
+                  className='players-info-box'
                 >
-                  <button
-                    className="roll-button"
-                    onClick={this.rollTheDice}
-                  >
-                    Roll!
-                  </button>
-                  <Dice
-                    rolledNumber={rolledNumber}
-                  />
-                </div>
-                <div
-                  className='moves-now'
-                >
-                  <h2>Moves now :</h2>
                   <div
-                    className='player-info'
+                    className='dice-box'
                   >
-                    {players.map(player => (
-                      <div
-                        key={player.number}
-                      >
-                        <img
-                          className={
-                            player.number === currentPlayer.number ?
-                              'pawn-image-large'
-                              :
-                              'pawn-image-small'
-                          }
-                          src={`./pawns/${player.pawnColor}-pawn.png`}
-                          alt={`${player.pawnColor}-pawn`}
-                        />
-                      </div>
-                    ))}
+                    <button
+                      className="roll-button"
+                      onClick={this.rollTheDice}
+                    >
+                      Roll!
+                  </button>
+                    <Dice
+                      rolledNumber={rolledNumber}
+                    />
+                  </div>
+                  <div
+                    className='moves-now'
+                  >
+                    <h2>Moves now :</h2>
+                    <div
+                      className='player-info'
+                    >
+                      {players.map(player => (
+                        <div
+                          key={player.number}
+                        >
+                          <img
+                            className={
+                              player.number === currentPlayer.number ?
+                                'pawn-image-large'
+                                :
+                                'pawn-image-small'
+                            }
+                            src={`./pawns/${player.pawnColor}-pawn.png`}
+                            alt={`${player.pawnColor}-pawn`}
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            :
-            <PlayerSelect gameStart={this.gameStart} />
-        }
-      </div>
+              :
+              <PlayerSelect gameStart={this.gameStart} />
+          }
+        </div>
     );
   }
 }

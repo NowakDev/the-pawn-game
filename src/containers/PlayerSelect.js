@@ -29,12 +29,15 @@ class PlayerSelect extends React.Component {
         {
           number: 1,
           pawnColor,
-          position: 0
+          position: 0,
+          rolledMeshes: []
+
         },
         {
           number: 2,
           pawnColor: this.state.pawns.find(pawn => pawn !== pawnColor),
-          position: 0
+          position: 0,
+          rolledMeshes: []
         }
       ]
     })
