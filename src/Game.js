@@ -108,12 +108,30 @@ class Game extends React.Component {
     })
   }
 
+  playAgain = () => {
+    this.setState({
+      players: [],
+      gameStarted: false,
+      currentPlayer: {},
+      rolledNumber: Math.ceil(Math.random() * 6),
+      isWinner: {},
+      snackbar: {
+        innerText: '',
+        open: false,
+        color: 'red'
+      }
+    })
+  }
+
   render() {
     const { players, gameStarted, currentPlayer, rolledNumber, isWinner, snackbar } = this.state
 
     return (
       isWinner.position ?
-        <Winner winner={isWinner.number} />
+        <Winner
+          winner={isWinner}
+          onClickHandler={this.playAgain}
+        />
         :
         <div
           className='game-container'
@@ -152,7 +170,7 @@ class Game extends React.Component {
                   <div
                     className='moves-now'
                   >
-                    <h2>Moves now :</h2>
+                    <h2 style={{ marginBottom: 0 }}>Rolls now :</h2>
                     <div
                       className='player-info'
                     >
@@ -160,6 +178,16 @@ class Game extends React.Component {
                         <div
                           key={player.number}
                         >
+                          <h3
+                            className={
+                              player.number === currentPlayer.number ?
+                                'player-number-large'
+                                :
+                                'player-number-small'
+                            }
+                          >
+                            Player {player.number}
+                          </h3>
                           <img
                             className={
                               player.number === currentPlayer.number ?

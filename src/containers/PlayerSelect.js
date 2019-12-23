@@ -1,22 +1,5 @@
 import React from 'react'
 
-const styles = {
-  container: {
-    display: 'flex'
-  },
-  pawnBox: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  pawn: {
-    width: 130,
-    height: 130,
-    margin: 20,
-    cursor: 'pointer',
-  }
-}
-
 class PlayerSelect extends React.Component {
   state = {
     pawns: ['red', 'blue'],
@@ -49,16 +32,19 @@ class PlayerSelect extends React.Component {
 
   render() {
     const { pawns, players } = this.state
+
     return (
       players.length === 0 ?
         <div>
-          <h1>Please, select a pawn to begin:</h1>
-          <div style={styles.pawnBox}>
+          <h1 style={{ textAlign: 'center' }}>
+            Please, select a pawn to begin:
+          </h1>
+          <div className='pawns-box'>
             {
               pawns.map(pawn => (
                 <div
                   key={pawn}
-                  style={styles.pawn}
+                  className='pawn'
                   onClick={() => this.pawnSelectHandler(pawn)}
                 >
                   <img
@@ -73,12 +59,21 @@ class PlayerSelect extends React.Component {
         </div>
         :
         <div style={{ textAlign: 'center' }}>
-          <div style={styles.pawnBox}>
+          <div>
+            <h2>Press play to start the game.</h2>
+            <h2>Player 1 starts. Hit Roll button to move forward.</h2>
+            <h2>Players change after every roll.</h2>
+            <h2>First player who reach the last tile wins.</h2>
+            <h2>If player stop at tile twelve, he looses.</h2>
+            <h2>If player stop at tile nineteen, moves back to tile eleven.</h2>
+            <h1>Have fun !</h1>
+          </div>
+          <div className='pawns-box'>
             {
               players.map(player => (
                 < h1
                   key={player.number}
-                  style={styles.pawnBox}
+                  className='pawns-box'
                 >
                   Player {player.number}:
                 <img

@@ -93,7 +93,12 @@ class Board extends React.Component {
                   gridRow: position.row,
                   gridColumn: position.col
                 }}
-                className='pawn-on-board'
+                className={
+                  players[index].number === 1 ?
+                    'first-pawn-on-board'
+                    :
+                    'second-pawn-on-board'
+                }
               >
                 <img
                   src={`./pawns/${players[index].pawnColor}-pawn.png`}
