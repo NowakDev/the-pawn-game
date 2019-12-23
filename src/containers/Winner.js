@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Winner = props => {
+const Winner = ({ winner }) => {
   return (
     <div>
-      Player {props.winner} wins !
+      Player {winner} wins !
     </div>
   )
 }

@@ -4,6 +4,7 @@ import PlayerSelect from './containers/PlayerSelect'
 import Board from './containers/Board'
 import Dice from './components/Dice'
 import Winner from '../src/containers/Winner'
+import SnackBar from './components/SnackBar'
 
 class Game extends React.Component {
 
@@ -12,7 +13,12 @@ class Game extends React.Component {
     gameStarted: false,
     currentPlayer: {},
     rolledNumber: Math.ceil(Math.random() * 6),
-    isWinner: {}
+    isWinner: {},
+    snackbar: {
+      innerText: '',
+      open: false,
+      color: 'red'
+    }
   }
 
   gameStart = (players) => {
@@ -26,7 +32,7 @@ class Game extends React.Component {
   }
 
   rollTheDice = () => {
-    const { currentPlayer } = this.state
+    const { currentPlayer, snackbar } = this.state
     const rolledNumber = Math.ceil(Math.random() * 6)
     const players = this.state.players.map(player => {
 
@@ -34,10 +40,33 @@ class Game extends React.Component {
         const rolledMeshes = player.rolledMeshes
         rolledMeshes.push(rolledNumber)
 
-        const updatedPosition = (player.position + rolledNumber) > 20 ?
+        let updatedPosition = (player.position + rolledNumber) > 20 ?
           20 - (player.position + rolledNumber - 20)
           :
           player.position + rolledNumber
+
+        if (updatedPosition === 19) {
+          updatedPosition = 11
+          this.setState({
+            snackbar: {
+              ...snackbar,
+              innerText: `Player ${currentPlayer.number} moved back to eleven.`,
+              open: true
+            }
+          })
+        }
+        if (updatedPosition === 12) {
+          const winner = this.state.players.find(player => player.number !== currentPlayer.number)
+          this.setState({
+            snackbar: {
+              ...snackbar,
+              innerText: `Player ${currentPlayer.number} lost !`,
+              open: true
+            }
+          }, () => setTimeout(() => {
+            this.setState({ isWinner: winner })
+          }, 2000))
+        }
 
         player = {
           ...player,
@@ -57,14 +86,30 @@ class Game extends React.Component {
       const isWinner = players.some(player => player.position === 20)
       if (isWinner) {
         this.setState({
-          isWinner: currentPlayer
-        })
+          snackbar: {
+            innerText: `Player ${currentPlayer.number} wins!`,
+            open: true,
+            color: 'green'
+          }
+        }, () => setTimeout(() => {
+          this.setState({ isWinner: currentPlayer })
+        }, 2000))
+      }
+    })
+  }
+
+  closeSnackBar = () => {
+    this.setState({
+      snackbar: {
+        innerText: '',
+        open: false,
+        color: 'red'
       }
     })
   }
 
   render() {
-    const { players, gameStarted, currentPlayer, rolledNumber, isWinner } = this.state
+    const { players, gameStarted, currentPlayer, rolledNumber, isWinner, snackbar } = this.state
 
     return (
       isWinner.position ?
@@ -84,10 +129,17 @@ class Game extends React.Component {
                 <div
                   className='players-info-box'
                 >
+                  <SnackBar
+                    innerText={snackbar.innerText}
+                    open={snackbar.open}
+                    handleClose={this.closeSnackBar}
+                    color={snackbar.color}
+                  />
                   <div
                     className='dice-box'
                   >
                     <button
+                      disabled={snackbar.open ? true : false}
                       className="roll-button"
                       onClick={this.rollTheDice}
                     >
