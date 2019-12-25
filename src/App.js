@@ -8,10 +8,10 @@ const App = (props) => {
   return (
     <div
       className={
-        document.body.clientWidth < 500 ?
+        document.body.clientWidth < 500 || document.body.clientHeight < 700 ?
           'App-mobile'
           :
-          document.body.clientWidth < 950 ?
+          document.body.clientWidth < 700 || document.body.clientHeight < 900 ?
             'App-tablets'
             :
             'App'
