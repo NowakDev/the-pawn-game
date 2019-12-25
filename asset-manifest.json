@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/the-pawn-game/static/css/main.ce594100.chunk.css",
-    "main.js": "/the-pawn-game/static/js/main.4487c3b8.chunk.js",
-    "main.js.map": "/the-pawn-game/static/js/main.4487c3b8.chunk.js.map",
+    "main.js": "/the-pawn-game/static/js/main.7f1cd671.chunk.js",
+    "main.js.map": "/the-pawn-game/static/js/main.7f1cd671.chunk.js.map",
     "runtime-main.js": "/the-pawn-game/static/js/runtime-main.0eb35121.js",
     "runtime-main.js.map": "/the-pawn-game/static/js/runtime-main.0eb35121.js.map",
     "static/js/2.88d9ad1b.chunk.js": "/the-pawn-game/static/js/2.88d9ad1b.chunk.js",
     "static/js/2.88d9ad1b.chunk.js.map": "/the-pawn-game/static/js/2.88d9ad1b.chunk.js.map",
     "index.html": "/the-pawn-game/index.html",
-    "precache-manifest.7c237d1b9eb40cb858065bf23747380e.js": "/the-pawn-game/precache-manifest.7c237d1b9eb40cb858065bf23747380e.js",
+    "precache-manifest.6698f2cdab98e0b2096a7a933ca58475.js": "/the-pawn-game/precache-manifest.6698f2cdab98e0b2096a7a933ca58475.js",
     "service-worker.js": "/the-pawn-game/service-worker.js",
     "static/css/main.ce594100.chunk.css.map": "/the-pawn-game/static/css/main.ce594100.chunk.css.map",
     "static/js/2.88d9ad1b.chunk.js.LICENSE": "/the-pawn-game/static/js/2.88d9ad1b.chunk.js.LICENSE"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.0eb35121.js",
     "static/js/2.88d9ad1b.chunk.js",
     "static/css/main.ce594100.chunk.css",
-    "static/js/main.4487c3b8.chunk.js"
+    "static/js/main.7f1cd671.chunk.js"
   ]
 }
