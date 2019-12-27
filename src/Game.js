@@ -63,9 +63,8 @@ class Game extends React.Component {
               innerText: `Player ${currentPlayer.number} lost !`,
               open: true
             }
-          }, () => setTimeout(() => {
-            this.setState({ isWinner: winner })
-          }, 2000))
+          }, () => this.whoIsAWinner(winner)
+          )
         }
 
         player = {
@@ -91,9 +90,8 @@ class Game extends React.Component {
             open: true,
             color: 'green'
           }
-        }, () => setTimeout(() => {
-          this.setState({ isWinner: currentPlayer })
-        }, 2000))
+        }, () => this.whoIsAWinner(currentPlayer)
+        )
       }
     })
   }
@@ -106,6 +104,16 @@ class Game extends React.Component {
         color: 'red'
       }
     })
+  }
+
+  whoIsAWinner = (winner) => {
+    setTimeout(() => {
+      this.setState({ isWinner: winner })
+    }, 2000)
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.whoIsAWinner)
   }
 
   playAgain = () => {
