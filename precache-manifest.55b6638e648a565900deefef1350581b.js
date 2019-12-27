@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2a9e562f5fe4a3f48ecd3c397fd2b4c5",
+    "revision": "a211edb27fe13b21db4fc7fe92c40695",
     "url": "/the-pawn-game/index.html"
   },
   {
-    "revision": "0502f26fdf31998f6fd5",
+    "revision": "3f18367c85784fc4df1e",
     "url": "/the-pawn-game/static/css/main.ce594100.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/the-pawn-game/static/js/2.88d9ad1b.chunk.js.LICENSE"
   },
   {
-    "revision": "0502f26fdf31998f6fd5",
-    "url": "/the-pawn-game/static/js/main.7f1cd671.chunk.js"
+    "revision": "3f18367c85784fc4df1e",
+    "url": "/the-pawn-game/static/js/main.40eb8f82.chunk.js"
   },
   {
     "revision": "4959ff29d903a55dab87",
