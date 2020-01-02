@@ -165,6 +165,11 @@
   transform: translateY(2px);
 }
 
+.roll-button:disabled {
+  color: gray;
+  border: none
+}
+
 .start-button {
   color: black;
   font-size: large;
