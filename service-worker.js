@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/the-pawn-game/precache-manifest.55b6638e648a565900deefef1350581b.js"
+  "/the-pawn-game/precache-manifest.8139899776048782b41c7d89f81c6d39.js"
 );
 
 self.addEventListener('message', (event) => {
