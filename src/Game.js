@@ -34,10 +34,8 @@ class Game extends React.Component {
 
   rollTheDice = () => {
     const { currentPlayer, snackbar } = this.state
-
     const rolledNumber = Math.ceil(Math.random() * 6)
     const players = this.state.players.map(player => {
-
 
       if (player.number === currentPlayer.number) {
         const rolledMeshes = player.rolledMeshes
@@ -58,6 +56,7 @@ class Game extends React.Component {
             }
           })
         }
+
         if (updatedPosition === 12) {
           const winner = this.state.players.find(player => player.number !== currentPlayer.number)
           this.setState({
@@ -86,6 +85,7 @@ class Game extends React.Component {
       rolledNumber
     }, () => {
       const isWinner = players.some(player => player.position === 20)
+
       if (isWinner) {
         this.setState({
           snackbar: {
