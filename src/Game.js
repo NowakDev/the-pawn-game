@@ -34,8 +34,10 @@ class Game extends React.Component {
 
   rollTheDice = () => {
     const { currentPlayer, snackbar } = this.state
+
     const rolledNumber = Math.ceil(Math.random() * 6)
     const players = this.state.players.map(player => {
+
 
       if (player.number === currentPlayer.number) {
         const rolledMeshes = player.rolledMeshes
@@ -97,7 +99,12 @@ class Game extends React.Component {
     })
   }
 
-  closeSnackBar = () => {
+  closeSnackBar = (event, reason) => {
+
+    if (reason === 'clickaway') {
+      return
+    }
+
     this.setState({
       snackbar: {
         innerText: '',
@@ -168,7 +175,7 @@ class Game extends React.Component {
                   />
                   <Dice
                     rolledNumber={rolledNumber}
-                    disable={snackbar.open}
+                    disableRolling={snackbar.open}
                     rollTheDice={this.rollTheDice}
                   />
                 </div>

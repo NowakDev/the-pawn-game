@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Dice = ({ rolledNumber, disable, rollTheDice }) => {
+const Dice = ({ rolledNumber, disableRolling, rollTheDice }) => {
+  console.log(disableRolling)
   return (
     <div
       className='dice-box'
@@ -14,7 +15,8 @@ const Dice = ({ rolledNumber, disable, rollTheDice }) => {
         />
       </div>
       <button
-        disabled={disable ? true : false}
+        type='button'
+        disabled={disableRolling ? 'disabled' : null}
         className="roll-button"
         onClick={rollTheDice}
       >
