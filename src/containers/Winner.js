@@ -2,7 +2,7 @@ import React from 'react'
 
 const Winner = ({ winner, onClickHandler }) => {
   const rolledMeshes = winner.rolledMeshes
-  const averageOfMeshes = (rolledMeshes.reduce((prevVal, curVal) => prevVal + curVal) / rolledMeshes.length).toFixed(0)
+  const averageOfMeshes = (rolledMeshes.reduce((prevVal, curVal) => prevVal + curVal) / rolledMeshes.length).toFixed(2)
 
   return (
     <div className='winner-box'>

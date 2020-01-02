@@ -1,11 +1,26 @@
 import React from 'react'
 
-const Dice = props => {
+const Dice = ({ rolledNumber, disable, rollTheDice }) => {
   return (
     <div
-      className='dice'
+      className='dice-box'
     >
-      {props.rolledNumber}
+      <div
+        className='dice'
+      >
+        <img
+          src={`./dice/dice-${rolledNumber}.png`}
+          alt={rolledNumber}
+        />
+      </div>
+      <button
+        disabled={disable ? true : false}
+        className="roll-button"
+        onClick={rollTheDice}
+      >
+        Roll!
+    </button>
+
     </div>
   )
 }

@@ -42,8 +42,9 @@
 
 .dice-box {
   display: flex;
-  width: 100%;
-  justify-content: flex-start;
+  margin-left: 10%;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -97,11 +98,11 @@
 }
 
 .pawn-image-small {
-  transform: scale(0.6);
+  transform: scale(0.5);
 }
 
 .pawn-image-large {
-  transform: scale(1.2);
+  transform: scale(1);
 }
 
 .pawns-box {
@@ -120,23 +121,25 @@
 .players-info-box {
   display: flex;
   margin: 10px;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .player-number-large {
   text-align: center;
+  margin: 0;
   transform: scale(1.2);
 }
 
 .player-number-small {
   text-align: center;
+  margin: 0;
   transform: scale(0.6);
 }
 
 .roll-button {
   color: black;
   font-size: large;
-  margin: 20px;
+  margin: 10px;
   text-transform: uppercase;
   text-decoration: none;
   background: lightgray;
@@ -145,8 +148,8 @@
   border: 3px solid black;
   transition: all 0.4s ease 0s;
   cursor: pointer;
-  width: 100px;
-  height: 70px;
+  width: 7em;
+  height: 4em;
 }
 
 .roll-button:hover {

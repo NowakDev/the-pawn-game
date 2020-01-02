@@ -5,6 +5,7 @@ import Board from './containers/Board'
 import Dice from './components/Dice'
 import Winner from '../src/containers/Winner'
 import SnackBar from './components/SnackBar'
+import WhoRollsNow from './components/WhoRollsNow'
 
 class Game extends React.Component {
 
@@ -18,7 +19,7 @@ class Game extends React.Component {
       innerText: '',
       open: false,
       color: 'red'
-    }
+    },
   }
 
   gameStart = (players) => {
@@ -161,55 +162,15 @@ class Game extends React.Component {
                     handleClose={this.closeSnackBar}
                     color={snackbar.color}
                   />
-                  <div
-                    className='dice-box'
-                  >
-                    <button
-                      disabled={snackbar.open ? true : false}
-                      className="roll-button"
-                      onClick={this.rollTheDice}
-                    >
-                      Roll!
-                  </button>
-                    <Dice
-                      rolledNumber={rolledNumber}
-                    />
-                  </div>
-                  <div
-                    className='moves-now'
-                  >
-                    <h2 style={{ marginBottom: 0 }}>Rolls now :</h2>
-                    <div
-                      className='player-info'
-                    >
-                      {players.map(player => (
-                        <div
-                          key={player.number}
-                        >
-                          <h3
-                            className={
-                              player.number === currentPlayer.number ?
-                                'player-number-large'
-                                :
-                                'player-number-small'
-                            }
-                          >
-                            Player {player.number}
-                          </h3>
-                          <img
-                            className={
-                              player.number === currentPlayer.number ?
-                                'pawn-image-large'
-                                :
-                                'pawn-image-small'
-                            }
-                            src={`./pawns/${player.pawnColor}-pawn.png`}
-                            alt={`${player.pawnColor}-pawn`}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <WhoRollsNow
+                    players={players}
+                    currentPlayer={currentPlayer}
+                  />
+                  <Dice
+                    rolledNumber={rolledNumber}
+                    disable={snackbar.open}
+                    rollTheDice={this.rollTheDice}
+                  />
                 </div>
               </div>
               :
